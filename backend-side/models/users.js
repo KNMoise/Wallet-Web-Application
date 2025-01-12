@@ -19,17 +19,13 @@ const users = sequelize.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       comment: "This is the email of the user",
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       comment: "This is the password of the user",
-    },
-    confirm_password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      comment: "This is the confirm password of the user",
     },
     created_at: {
       type: DataTypes.DATE,
