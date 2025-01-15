@@ -16,30 +16,18 @@ const setupAssociations = () => {
   users.hasMany(Blacklist, { foreignKey: "user_id", onDelete: "CASCADE" });
 
   Accounts.belongsTo(users, { foreignKey: "user_id" });
-  Accounts.hasMany(Transactions, {
-    foreignKey: "account_id",
-    onDelete: "CASCADE",
-  });
+  Accounts.hasMany(Transactions, {foreignKey: "account_id",onDelete: "CASCADE",});
 
   categories.belongsTo(users, { foreignKey: "user_id" });
-  categories.hasMany(Subcategories, {
-    foreignKey: "category_id",
-    onDelete: "CASCADE",
-  });
-  categories.hasMany(Budgets, {
-    foreignKey: "category_id",
-    onDelete: "CASCADE",
-  });
-  categories.hasMany(Transactions, {
-    foreignKey: "category_id",
-    onDelete: "CASCADE",
-  });
+  categories.hasMany(Subcategories, {foreignKey: "category_id",onDelete: "CASCADE",});
+  categories.hasMany(Budgets, {foreignKey: "category_id",onDelete: "CASCADE",});
+  categories.hasMany(Transactions, { foreignKey: "category_id",onDelete: "CASCADE",});
 
   Subcategories.belongsTo(categories, { foreignKey: "category_id" });
-  Subcategories.hasMany(Transactions, {
-    foreignKey: "subcategory_id",
-    onDelete: "SET NULL",
-  });
+  Subcategories.hasMany(Transactions, {foreignKey: "subcategory_id", onDelete: "SET NULL",});
+
+  Budgets.belongsTo(categories, { foreignKey: "category_id" });
+  categories.hasMany(Budgets, { foreignKey: "category_id" });
 
   Transactions.belongsTo(Accounts, { foreignKey: "account_id" });
   Transactions.belongsTo(categories, { foreignKey: "category_id" });

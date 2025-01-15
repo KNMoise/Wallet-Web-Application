@@ -18,7 +18,6 @@ const getUnreadNotifications = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   }
-
   // Mark notification as read
   const markAsRead = async (req, res) => {
     try {
@@ -31,7 +30,6 @@ const getUnreadNotifications = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   }
-
 module.exports = {
   getUnreadNotifications,
   markAsRead

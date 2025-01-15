@@ -11,13 +11,8 @@ const createCategory = async (req, res) => {
       name,
       type,
     });
+    res.status(201).json({ message: "Category Created Successfully", data: category });
 
-    res
-      .status(201)
-      .json(category, {
-        success: true,
-        message: "Category Created Successfully",
-      });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -33,13 +28,7 @@ const createSubcategory = async (req, res) => {
       name,
       description,
     });
-
-    res
-      .status(201)
-      .json(subcategory, {
-        success: true,
-        message: "Subcategories created Successfully",
-      });
+    res.status(201).json({ message: "Subcategories created Successfully", data: subcategory });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -53,11 +42,7 @@ const getUserCategories = async (req, res) => {
       where: { user_id },
       include: [{ model: Subcategories }],
     });
-
-    res.json(categories, {
-      success: true,
-      message: "Retrieve the User Category Successfully",
-    });
+    res.status(201).json({ message: "Retrieve the User Category Successfully", data: categories });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

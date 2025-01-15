@@ -9,13 +9,13 @@ const Transactions = sequelize.define(
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
-      comment: "Primary key for the budgets table",
+      comment: "Primary key for the transactions table",
     },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'users', // Ensure `users` table exists
+        model: 'users',
         key: 'id',
       },
       onDelete: 'CASCADE',
@@ -26,7 +26,7 @@ const Transactions = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'accounts', // Ensure `accounts` table exists
+        model: 'accounts', 
         key: 'id',
       },
       onDelete: 'CASCADE',
@@ -37,7 +37,7 @@ const Transactions = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'categories', // Ensure `categories` table exists
+        model: 'categories',
         key: 'id',
       },
       onDelete: 'CASCADE',
@@ -48,13 +48,13 @@ const Transactions = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-          model: 'subcategories', // Ensure `subcategories` table exists
-          key: 'id',
+        model: 'subcategories',
+        key: 'id',
       },
       onDelete: 'SET NULL',
       onUpdate: 'CASCADE',
-      comment: "Subcategory of the transaction",
-  },
+      comment: "Foreign key referencing the subcategory",
+    },
     type: {
       type: DataTypes.ENUM('Income', 'Expense'),
       allowNull: false,
@@ -83,12 +83,12 @@ const Transactions = sequelize.define(
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
       allowNull: false,
-      comment: "The timestamp when the account was created",
+      comment: "The timestamp when the transaction was created",
     },
   },
   {
     tableName: 'transaction',
-    timestamps: true, // Sequelize handles `createdAt` and `updatedAt`
+    timestamps: true, 
     createdAt: 'created_at',
     updatedAt: false,
   }
