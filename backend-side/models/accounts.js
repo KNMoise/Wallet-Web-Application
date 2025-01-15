@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Op } = require("sequelize");
 const { sequelize } = require("../db/connection");
 
 const Accounts = sequelize.define(
@@ -27,16 +27,16 @@ const Accounts = sequelize.define(
       comment: "The type of the account",
     },
     balance: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: DataTypes.DECIMAL(30, 2),
       allowNull: false,
       defaultValue: 0.0,
-      currency: {
-        type: DataTypes.ENUM("RWF", "USD", "EUR"),
-        allowNull: false,
-        defaultValue: "RWF",
-        comment: "The currency of the account",
-      },
       comment: "The balance of the account",
+    },
+    currency: {
+      type: DataTypes.ENUM("RWF", "USD", "EUR"),
+      allowNull: false,
+      defaultValue: "RWF",
+      comment: "The currency of the account",
     },
     created_at: {
       type: DataTypes.DATE,

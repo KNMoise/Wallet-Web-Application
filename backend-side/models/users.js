@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
 
+
 const users = sequelize.define(
   "users",
   {
@@ -39,6 +40,7 @@ const users = sequelize.define(
     timestamps: false,
   }
 );
+
 
 
 module.exports = users;

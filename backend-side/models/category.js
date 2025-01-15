@@ -1,9 +1,8 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
 
-const categories = sequelize.define(
-  "categories",
-  {
+const Categories = sequelize.define("categories", {
+
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -39,10 +38,10 @@ const categories = sequelize.define(
   }
 );
 
-categories.associate = (models) => {
-  categories.belongsTo(models.users, {
-    foreignKey: "user_id",
-    as: "users",
-  });
-};
-module.exports = categories;
+// categories.associate = (models) => {
+//   categories.belongsTo(models.users, {
+//     foreignKey: "user_id",
+//     as: "users",
+//   });
+// };
+module.exports = Categories;

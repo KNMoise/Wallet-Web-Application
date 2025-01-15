@@ -1,9 +1,11 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
-const users = require("../models/users");
 const Blacklist = require("../models/blacklist");
+const users = require('../models/users');
 const validator = require("validator");
+const setupAssociations = require('../models/association');
+
 
 const createToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
@@ -213,7 +215,7 @@ const handleVerifyUserLogout = async (req, res, next) => {
 
     // Verify token
     try {
-      const decoded = jwt.verify(accessToken, process.env.JWT_SECRET); 
+      const decoded = jwt.verify(accessToken, process.env.JWT_SECRET);
 
       // Find user using same model as login handler
       const user = await users.findOne({

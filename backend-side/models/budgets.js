@@ -1,9 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
 
-const Budgets  = sequelize.define(
-  "Budgets ",
-  {
+const Budgets = sequelize.define("Budgets", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -21,17 +19,11 @@ const Budgets  = sequelize.define(
       allowNull: false,
       comment: "Foreign key referencing the category",
     },
-    amount:{
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-        defaultValue: 0.0,
-        currency: {
-            type: DataTypes.ENUM("RWF", "USD", "EUR"),
-            allowNull: false,
-            defaultValue: "RWF",
-            comment: "The currency of the account",
-        },
-        comment: "The amount of the budget",
+    amount: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0.0,
+      comment: "The amount of the budget",
     },
     period:{
         type: DataTypes.ENUM("daily", "weekly", "monthly", "yearly"),
@@ -48,17 +40,17 @@ const Budgets  = sequelize.define(
         allowNull: false,
         comment: "The date when the budget ends",
     },
-    current_spendings:{
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-        defaultValue: 0.0,
-        currency: {
-            type: DataTypes.ENUM("RWF", "USD", "EUR"),
-            allowNull: false,
-            defaultValue: "RWF",
-            comment: "The currency of the account",
-        },
-        comment: "The current spendings of the budget",
+    currency: {
+      type: DataTypes.ENUM("RWF", "USD", "EUR"),
+      allowNull: false,
+      defaultValue: "RWF",
+      comment: "The currency of the budget",
+    },
+    current_spendings: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0.0,
+      comment: "The current spendings of the budget",
     },
     created_at: {
       type: DataTypes.DATE,

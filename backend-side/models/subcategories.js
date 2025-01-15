@@ -1,9 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
 
-const Subcategories = sequelize.define(
-  "subcategories",
-  {
+const Subcategories = sequelize.define("subcategories", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,

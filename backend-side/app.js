@@ -1,13 +1,15 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const { connectToDatabase, sequelize } = require("./db/connection"); // Ensure sequelize is imported
+const { connectToDatabase, sequelize } = require("./db/connection");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const index = require("./routes/index");
+const setupAssociations = require('./models/association');
+
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 9000;
 
 // Ensure all critical configs are validated before starting the server
 process.on("uncaughtException", (error) => {
@@ -26,16 +28,14 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET || process.env.JWT_SECRET,
     resave: false,
-    saveUninitialized: false, 
-    name: "sessionId", 
+    saveUninitialized: false,
+    name: "sessionId",
     cookie: {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 30 , 
+      maxAge: 1000 * 60 * 60 * 30,
     },
-   
   })
 );
-
 
 app.use("/api/v1/auth", index);
 
@@ -43,9 +43,10 @@ async function startServer() {
   try {
     // Connect to database
     await connectToDatabase();
-
+    await setupAssociations();
+    
     await sequelize
-      .sync({ force: true })
+      .sync({ force: false })
       .then(() => {
         console.log("Database synced successfully");
       })

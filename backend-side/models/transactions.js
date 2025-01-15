@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
 
-const Budgets  = sequelize.define(
-  "Budgets ",
+const Transactions = sequelize.define(
+  "Transactions",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -14,32 +14,64 @@ const Budgets  = sequelize.define(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'users', // Ensure `users` table exists
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
       comment: "Foreign key referencing the user",
     },
-    account_id:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        comment: "Foreign key referencing the account",
+    account_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'accounts', // Ensure `accounts` table exists
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+      comment: "Foreign key referencing the account",
     },
     category_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'categories', // Ensure `categories` table exists
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
       comment: "Foreign key referencing the category",
     },
     subcategory_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+          model: 'subcategories', // Ensure `subcategories` table exists
+          key: 'id',
+      },
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE',
+      comment: "Subcategory of the transaction",
+  },
+    type: {
       type: DataTypes.ENUM('Income', 'Expense'),
       allowNull: false,
-      comment: "Foreign key referencing the subcategory",
+      comment: "Type of transaction",
     },
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      comment: "The amount of the budget",
+      validate: {
+        min: 0,
+      },
+      comment: "The amount of the transaction",
     },
     description: {
       type: DataTypes.STRING,
       allowNull: true,
-      comment: "The description of the budget",
+      comment: "The description of the transaction",
     },
     date_transaction: {
       type: DataTypes.DATE,
@@ -55,9 +87,11 @@ const Budgets  = sequelize.define(
     },
   },
   {
-    tableName: "budgets ",
-    timestamps: false,
+    tableName: 'transaction',
+    timestamps: true, // Sequelize handles `createdAt` and `updatedAt`
+    createdAt: 'created_at',
+    updatedAt: false,
   }
 );
 
-module.exports = Budgets;
+module.exports = Transactions;
