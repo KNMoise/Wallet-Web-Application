@@ -17,6 +17,4 @@ api.interceptors.request.use((config) => {
 });
 
 // export module  api default to use in other files
-module.exports = {
-  api,
-};
+export default api;
