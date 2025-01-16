@@ -4,7 +4,6 @@ const router = express.Router();
 
 //Controllers Imports
 const authController = require("../controllers/authController");
-const moneyController = require("../controllers/moneyController");
 const acountController = require("../controllers/acountController");
 const TransactionController = require("../controllers/TransactionController");
 const BudgetController = require("../controllers/BudgetController");
@@ -47,9 +46,6 @@ router.patch("/accounts/:id/balance", acountController.updateBalance);
 router.post("/register", authController.handleUserRegister);
 router.post("/login", authController.handleUserLogin);
 
-router.post("/moneyIn", moneyController.handleIncome);
-router.put("/updateIncome/:id", moneyController.handleUpdateIncome);
-router.get("/fetchIncome", moneyController.fetchIncome);
-router.delete("/deleteIncome/:id", moneyController.handleDeleteIncome);
+
 
 module.exports = router;
