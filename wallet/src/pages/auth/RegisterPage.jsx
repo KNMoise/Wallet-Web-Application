@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-// import { useAuth } from "../../hooks/useAuth";
 
 const RegisterPage = () => {
-  const navigate = useNavigate();
-  const { register } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -29,11 +26,13 @@ const RegisterPage = () => {
     }
 
     try {
-      await register(formData.email, formData.password);
-      navigate("/dashboard");
+      // Simulate API call
+      setTimeout(() => {
+        console.log('Registration attempt:', formData);
+        setLoading(false);
+      }, 1000);
     } catch (err) {
       setError("Failed to create an account");
-    } finally {
       setLoading(false);
     }
   };
@@ -87,6 +86,11 @@ const RegisterPage = () => {
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Creating Account..." : "Register"}
             </Button>
+            <div className="text-center">
+              <Link to="/login" className="text-blue-500 hover:text-blue-600">
+                Already have an account? Login
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>

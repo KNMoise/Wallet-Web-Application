@@ -1,39 +1,42 @@
 import { useState } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Wallet, Receipt, PieChart, Bell, LogOut, Menu } from "lucide-react";
-import { useAuth } from "../../hooks/useAuth";
+import { 
+  LayoutDashboard, 
+  Wallet, 
+  Receipt, 
+  PieChart, 
+  Bell, 
+  LogOut, 
+  Menu 
+} from "lucide-react";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { logout, user } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  
+  const mockUser = {
+    email: "user@example.com"
   };
 
   const sidebarItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-    // { icon: Wallet, label: "Accounts", path: "/accounts" },
-    // { icon: Receipt, label: "Transactions", path: "/transactions" },
-    // { icon: PieChart, label: "Budgets", path: "/budgets" },
+    { icon: Wallet, label: "Accounts", path: "/accounts" },
+    { icon: Receipt, label: "Transactions", path: "/transactions" },
+    { icon: PieChart, label: "Budgets", path: "/budgets" }
   ];
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Sidebar */}
       <aside
         className={`
-        fixed top-0 left-0 z-40 h-screen transition-transform
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0 w-64 bg-white border-r
-      `}
+          fixed top-0 left-0 z-40 h-screen transition-transform
+          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0 w-64 bg-white border-r
+        `}
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-center h-16 border-b">
-            <h1 className="text-xl font-bold">Financial Dashboard</h1>
+            <h1 className="text-xl font-bold">YOUR WALLET MANAGER</h1>
           </div>
 
           <nav className="flex-1 p-4 space-y-2">
@@ -50,19 +53,19 @@ const DashboardLayout = () => {
           </nav>
 
           <div className="p-4 border-t">
-            <Button
-              variant="ghost"
-              className="w-full justify-start"
-              onClick={handleLogout}
-            >
-              <LogOut className="w-5 h-5 mr-3" />
-              Logout
-            </Button>
+            <Link to="/login">
+              <Button
+                variant="ghost"
+                className="w-full justify-start"
+              >
+                <LogOut className="w-5 h-5 mr-3" />
+                Logout
+              </Button>
+            </Link>
           </div>
         </div>
       </aside>
 
-      {/* Main content */}
       <div className="md:ml-64">
         <header className="h-16 bg-white border-b">
           <div className="flex items-center justify-between h-full px-4">
@@ -79,7 +82,7 @@ const DashboardLayout = () => {
               <Button variant="ghost" size="icon">
                 <Bell className="w-5 h-5" />
               </Button>
-              <span className="font-medium">{user?.email}</span>
+              <span className="font-medium">{mockUser.email}</span>
             </div>
           </div>
         </header>

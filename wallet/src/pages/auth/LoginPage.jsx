@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-export default function LoginPage() {
-  const navigate = useNavigate();
-  const { login } = useAuth();
+const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -18,14 +16,16 @@ export default function LoginPage() {
 
     try {
       const formData = new FormData(e.target);
-      await login({
+      console.log('Login attempt:', {
         email: formData.get('email'),
         password: formData.get('password'),
       });
-      navigate('/dashboard');
+      // Simulate API call
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
-    } finally {
+      setError('Login failed');
       setLoading(false);
     }
   };
@@ -66,9 +66,16 @@ export default function LoginPage() {
             >
               {loading ? 'Loading...' : 'Login'}
             </Button>
+            <div className="text-center">
+              <Link to="/register" className="text-blue-500 hover:text-blue-600">
+                Need an account? Register
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>
     </div>
   );
-}
+};
+
+export default LoginPage;
