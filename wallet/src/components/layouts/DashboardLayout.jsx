@@ -14,7 +14,9 @@ const DashboardLayout = () => {
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
     { icon: Wallet, label: "Accounts", path: "/accounts" },
     { icon: Receipt, label: "Transactions", path: "/transactions" },
-    { icon: PieChart, label: "Budgets", path: "/budgets" }
+    { icon: PieChart, label: "Budgets", path: "/budgets" },
+    { icon: PieChart, label: "Transactions", path: "/transactions" },
+    { icon: Wallet, label: "Reports", path: "/reports" }
   ];
 
   return (
