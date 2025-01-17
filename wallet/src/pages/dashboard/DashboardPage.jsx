@@ -110,25 +110,6 @@ const DashboardPage = () => {
           </CardContent>
         </Card>
       </div>
-
-      {/* Expenses by Category */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Expenses by Category</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={categoryData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="amount" fill="#8884d8" />
-            </BarChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
     </div>
   );
 };
