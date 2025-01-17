@@ -1,15 +1,7 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { 
-  LayoutDashboard, 
-  Wallet, 
-  Receipt, 
-  PieChart, 
-  Bell, 
-  LogOut, 
-  Menu 
-} from "lucide-react";
+import { LayoutDashboard, Wallet, Receipt, PieChart, Bell, LogOut, Menu } from "lucide-react";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -36,7 +28,7 @@ const DashboardLayout = () => {
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-center h-16 border-b">
-            <h1 className="text-xl font-bold">YOUR WALLET MANAGER</h1>
+            <h1 className="text-xl font-bold">QuantumWallet</h1>
           </div>
 
           <nav className="flex-1 p-4 space-y-2">
