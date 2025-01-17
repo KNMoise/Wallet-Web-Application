@@ -77,7 +77,7 @@ const DashboardPage = () => {
         {/* Main Chart */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Income vs Expenses</CardTitle>
+            <CardTitle>TRANSACTIONS CHART</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -104,21 +104,30 @@ const DashboardPage = () => {
           </CardContent>
         </Card>
         <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableCaption>A list of your recent Transactions.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Invoice</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="w-[100px]">Transaction</TableHead>
+              <TableHead>Type</TableHead>
               <TableHead>Method</TableHead>
               <TableHead className="text-right">Amount</TableHead>
+              <TableHead className="text-right">Currency</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>Credit Card</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
+              <TableCell className="font-medium">TRANS001</TableCell>
+              <TableCell>Income</TableCell>
+              <TableCell>MoMo</TableCell>
+              <TableCell className="text-right">+250.00</TableCell>
+              <TableCell className="text-right">USD</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="font-medium">TRANS002</TableCell>
+              <TableCell>Expense</TableCell>
+              <TableCell>MoMo</TableCell>
+              <TableCell className="text-right">-50.00</TableCell>
+              <TableCell className="text-right">RWF</TableCell>
             </TableRow>
           </TableBody>
         </Table>
