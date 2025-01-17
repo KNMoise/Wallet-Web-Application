@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../../components/ui/select";
 
 const AccountForm = ({ onSubmit, initialData = {} }) => {
   const [formData, setFormData] = useState({
