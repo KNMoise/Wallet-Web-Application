@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -35,7 +35,6 @@ const LoginPage = () => {
       <Card className="w-[400px]">
         <CardHeader>
           <h2 className="text-2xl font-bold text-center" Link to="/dashboard">
-            
             <Link to="/dashboard" className="text-blue-300 hover:text-blue-700">
               LOGIN
             </Link>

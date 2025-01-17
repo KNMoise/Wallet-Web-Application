@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Wallet, Receipt, PieChart, Bell, LogOut } from "lucide-react";
+import { Button } from "../../components/ui/button";
+import {LayoutDashboard,Wallet,Receipt,PieChart,Bell,LogOut,} from "lucide-react";
+import {NavigationMenu,NavigationMenuItem,NavigationMenuLink,NavigationMenuList,navigationMenuTriggerStyle,} from "../../components/ui/navigation-menu";
 
 const DashboardLayout = () => {
   const mockUser = {
@@ -14,26 +15,31 @@ const DashboardLayout = () => {
     { icon: PieChart, label: "Budgets", path: "/budgets" },
     { icon: Wallet, label: "Reports", path: "/reports" },
   ];
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Top Menu Bar */}
       <header className="bg-white border-b shadow">
         <div className="flex items-center justify-between h-16 px-6">
-          <h1 className="text-xl font-bold">QuantumWallet</h1>
           {/* Navigation Menu */}
-          <nav className="flex space-x-6">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="flex items-center text-gray-700 hover:text-blue-600"
-              >
-                <item.icon className="w-5 h-5 mr-2" />
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <NavigationMenu className="w-full">
+            <NavigationMenuList className="flex justify-center gap-4">
+              {menuItems.map((item) => (
+                <NavigationMenuItem key={item.path}>
+                  <NavigationMenuLink asChild>
+                    <a
+                      href={item.path}
+                      className="flex items-center gap-2 text-sm font-medium hover:text-primary"
+                    >
+                      <item.icon className="w-4 h-4" />
+                      {item.label}
+                    </a>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
           {/* User Info & Notifications */}
           <div className="flex items-center space-x-4">
@@ -55,6 +61,13 @@ const DashboardLayout = () => {
       <main className="flex-grow p-6">
         <Outlet />
       </main>
+      <footer className="bg-white border-t shadow">
+        <div className="flex items-center justify-center h-16 px-6">
+          <div className="text-sm text-gray-600 ">
+            &copy; 2025 COA. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

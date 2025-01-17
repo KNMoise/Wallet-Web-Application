@@ -39,41 +39,40 @@ const DashboardPage = () => {
         {/* Summary Cards */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
+            <CardTitle className="text-sm font-medium">Balance</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$12,890</div>
             <p className="text-xs text-muted-foreground">
-              +2.5% from last month
+              +2.5% from yesterday
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">
-              Monthly Income
+              Daily Income
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$5,670</div>
             <p className="text-xs text-muted-foreground">
-              +12% from last month
+              +12% from yesterday
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">
-              Monthly Expenses
+              Daily Expenses
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$3,450</div>
-            <p className="text-xs text-muted-foreground">-5% from last month</p>
+            <p className="text-xs text-muted-foreground">-5% from yesterday</p>
           </CardContent>
         </Card>
       </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Chart */}
         <Card className="lg:col-span-2">
@@ -104,7 +103,6 @@ const DashboardPage = () => {
             </ResponsiveContainer>
           </CardContent>
         </Card>
-
         <Table>
           <TableCaption>A list of your recent invoices.</TableCaption>
           <TableHeader>
