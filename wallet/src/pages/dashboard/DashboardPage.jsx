@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Calendar } from "../../components/ui/calendar";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import {Card,CardContent,CardHeader,CardTitle,} from "../../components/ui/card";
+import {Table,TableBody,TableCaption,TableCell,TableHead,TableHeader,TableRow,} from "../../components/ui/table";
+
+import {LineChart,Line,BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend,ResponsiveContainer,} from "recharts";
 
 const DashboardPage = () => {
   const [date, setDate] = useState(new Date());
@@ -41,21 +43,29 @@ const DashboardPage = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$12,890</div>
-            <p className="text-xs text-muted-foreground">+2.5% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +2.5% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Income</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Monthly Income
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$5,670</div>
-            <p className="text-xs text-muted-foreground">+12% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +12% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Expenses</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Monthly Expenses
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$3,450</div>
@@ -78,16 +88,16 @@ const DashboardPage = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line 
-                  type="monotone" 
-                  dataKey="income" 
-                  stroke="#8884d8" 
+                <Line
+                  type="monotone"
+                  dataKey="income"
+                  stroke="#8884d8"
                   strokeWidth={2}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="expenses" 
-                  stroke="#82ca9d" 
+                <Line
+                  type="monotone"
+                  dataKey="expenses"
+                  stroke="#82ca9d"
                   strokeWidth={2}
                 />
               </LineChart>
@@ -95,20 +105,25 @@ const DashboardPage = () => {
           </CardContent>
         </Card>
 
-        {/* Calendar Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Calendar</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border w-full"
-            />
-          </CardContent>
-        </Card>
+        <Table>
+          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Invoice</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Method</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="font-medium">INV001</TableCell>
+              <TableCell>Paid</TableCell>
+              <TableCell>Credit Card</TableCell>
+              <TableCell className="text-right">$250.00</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
     </div>
   );
