@@ -17,3 +17,12 @@ export function Input({ className, ...props }: any) {
         />
     );
 }
+export function Avatar({ src, alt }: { src: string; alt: string }) {
+    return (
+        <img
+            className="w-12 h-12 rounded-full border-2 border-gray-200"
+            src={src}
+            alt={alt}
+        />
+    );
+}

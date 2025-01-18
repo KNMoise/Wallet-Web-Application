@@ -1,13 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "../../components/ui/index";
 import { useForm } from "react-hook-form";
 
 
 export default function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data: any) => {
         console.log("Login data:", data);
+        navigate("/dashboard");
     };
+    
 
     return (
         <div className="relative min-h-screen flex items-center justify-center">
